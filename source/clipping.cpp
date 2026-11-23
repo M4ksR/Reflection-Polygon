@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "clipping.hpp"
 
 bool isInside(const Point2D& point, const ClipRect& rect, ClipEdge edge) {
@@ -13,6 +15,9 @@ bool isInside(const Point2D& point, const ClipRect& rect, ClipEdge edge) {
 
         case ClipEdge::Top: 
             return point.y <= rect.ymax;
+
+        default:
+            throw std::logic_error("error isInside");
     }
 }
 
@@ -41,6 +46,9 @@ Point2D findIntersection(const Point2D& p1, const Point2D& p2, const ClipRect& r
             t = (rect.ymax - p1.y) / (p2.y - p1.y);
             x = p1.x + t * (p2.x - p1.x);
             return {x, rect.ymax};
+
+        default:
+            throw std::logic_error("error findIntersection");
     }
 }
 
