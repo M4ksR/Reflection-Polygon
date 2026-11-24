@@ -81,6 +81,7 @@ void drawPolygon(std::vector<std::vector<RGB>>& Image,
     }
 }
 
+// Функция перевода 2D координат в координаты пикселей на экране
 PixelPoint toScreen(const Point2D& point, const ClipRect& rect, int width, int height) {
     double x = std::lround((point.x - rect.xmin) * (width - 1) / (rect.xmax - rect.xmin));
     double y = std::lround((rect.ymax - point.y) * (height - 1) / (rect.ymax - rect.ymin));

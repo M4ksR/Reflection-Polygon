@@ -2,6 +2,7 @@
 
 #include "matrix.hpp"
 
+// Функция задания единичной матрицы
 Matrix4x4 identityMatrix() {
     return {{
         {1, 0, 0, 0},
@@ -11,6 +12,7 @@ Matrix4x4 identityMatrix() {
     }};
 }
 
+// Оператор умножения для удобной записи композиций преобразований
 Matrix4x4 operator*(const Matrix4x4& a, const Matrix4x4& b) {
     Matrix4x4 res;
     for (int i = 0; i < 4; ++i) {
@@ -25,6 +27,7 @@ Matrix4x4 operator*(const Matrix4x4& a, const Matrix4x4& b) {
     return res;
 }
 
+// Функция переноса точки на вектор
 Point3D transformPoint(const Matrix4x4& matrix, const Point3D& point) {
     double x = point.x;
     double y = point.y;
@@ -37,6 +40,7 @@ Point3D transformPoint(const Matrix4x4& matrix, const Point3D& point) {
     };
 }
 
+// Функция задания матрицы переноса
 Matrix4x4 translationMatrix(double dx, double dy, double dz) {
     return {{
         {1, 0, 0, dx},
@@ -46,6 +50,7 @@ Matrix4x4 translationMatrix(double dx, double dy, double dz) {
     }};
 }
 
+// Функция задания матрицы поворота вокруг Ox для заданного угла 
 Matrix4x4 rotationX(double angle) {
     double cos = std::cos(angle);
     double sin = std::sin(angle);
@@ -58,6 +63,7 @@ Matrix4x4 rotationX(double angle) {
      }};
 }
 
+// Функция задания матрицы поворота вокруг Oy для заданного угла 
 Matrix4x4 rotationY(double angle) {
     double cos = std::cos(angle);
     double sin = std::sin(angle);
@@ -70,6 +76,7 @@ Matrix4x4 rotationY(double angle) {
     }};
 }
 
+// Функция задания матрицы отражения относительно плоскости Oxy
 Matrix4x4 reflectionXY() {
     return {{
         {1, 0,  0, 0},
